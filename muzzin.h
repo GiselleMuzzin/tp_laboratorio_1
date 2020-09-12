@@ -45,12 +45,12 @@ float divideOperation (float a, float b);
 
 /** \brief calcula el factorial del operando
 *
-*   \param a float operando del factorial
+*   \param a int operando del factorial
 *
 *   \return el resultado del factorial
 *
 */
-int factorialOperation (int a);
+long long unsigned factorialOperation (int a);
 
 /** \brief calcula el factorial del operando
 *
@@ -60,15 +60,15 @@ int factorialOperation (int a);
 *   \param pSubtractionResult float* puntero al resultado de la resta
 *   \param pMultiplicationResult float* puntero al resultado de la multiplicación
 *   \param pDivisionResult float* puntero al resultado de la división
-*   \param pFactorialResultA long long int* puntero al resultado del factorial
-*   \param pFactorialResultB long long int* puntero al resultado del factorial
+*   \param pFactorialResultA long long unsigned* puntero al resultado del factorial
+*   \param pFactorialResultB long long unsigned* puntero al resultado del factorial
 *   \param pFlagUpdatedCalculations float* puntero a la bandera de cálculos
 *
 *   \return void
 *
 */
 void performCalculations(float firstOperand, float secondOperand, float* pAddResult, float* pSubtractionResult, float* pMultiplicationResult,
-                         float* pDivisionResult, long long int* pFactorialResultA, long long int* pFactorialResultB, int* pFlagUpdatedCalculations);
+                         float* pDivisionResult, long long unsigned* pFactorialResultA, long long unsigned* pFactorialResultB, int* pFlagUpdatedCalculations);
 
 
 // Grupo de funciones relacionado a validación
@@ -127,32 +127,32 @@ void displayOperationResult(char operatorChar, float result);
 
 /** \brief muestra el mensaje del resultado de la operación
 *
-*   \param resultA long long int resultado del factorial del primer operando
-*   \param resultB long long int resultado del factorial del segundo operando
+*   \param resultA long long unsigned resultado del factorial del primer operando
+*   \param resultB long long unsigned resultado del factorial del segundo operando
 *
 *   \return void
 *
 */
-void displayFactorialResult(long long int resultA, long long int resultB);
+void displayFactorialResult(long long unsigned resultA, long long unsigned resultB);
 
 
 /** \brief muestra el mensaje del resultado de la operación, cuando solo se puede calcular el factorial del primer operando
 *
-*   \param result long long int resultado del factorial del primer operando
+*   \param result long long unsigned resultado del factorial del primer operando
 *
 *   \return void
 *
 */
-void displayFactorialResultA(long long int result);
+void displayFactorialResultA(long long unsigned result);
 
 /** \brief muestra el mensaje del resultado de la operación, cuando solo se puede calcular el factorial del segundo operando
 *
-*   \param result long long int resultado del factorial del segundo operando
+*   \param result long long unsigned resultado del factorial del segundo operando
 *
 *   \return void
 *
 */
-void displayFactorialResultB(long long int result);
+void displayFactorialResultB(long long unsigned result);
 
 /** \brief muestra el mensaje del resultado de cada operación
 *
@@ -162,14 +162,14 @@ void displayFactorialResultB(long long int result);
 *   \param divisionResult float el resultado de la división
 *   \param firstOperand float primer operando
 *   \param secondOperand float segundo operando
-*   \param factorialResultA long long int el resultado del factorial
-*   \param factorialResultB long long int el resultado del factorial
+*   \param factorialResultA long long unsigned el resultado del factorial
+*   \param factorialResultB long long unsigned el resultado del factorial
 *
 *   \return void
 *
 */
 void displayAllTheResults(float addResult, float subtractionResult, float multiplicationResult, float divisionResult, float firstOperand,
-                          float secondOperand, long long int factorialResultA, long long int factorialResultB);
+                          float secondOperand, long long unsigned factorialResultA, long long unsigned factorialResultB);
 
 /** \brief muestra el menú por pantalla
 *

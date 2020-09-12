@@ -31,8 +31,8 @@ int main(void)
     float subtractionResult;
     float multiplicationResult;
     float divisionResult;
-    long long int factorialResultA;
-    long long int factorialResultB;
+    long long unsigned factorialResultA;
+    long long unsigned factorialResultB;
     int option;
     int flagUpdatedCalculations = 0;
     int flagFirstOperandLoaded = 0;

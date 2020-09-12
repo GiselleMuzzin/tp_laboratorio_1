@@ -32,7 +32,7 @@ float divideOperation(float a, float b)
     return division;
 }
 
-int factorialOperation(int a)
+long long unsigned factorialOperation(int a)
 {
     if(a == 1)
     {
@@ -40,14 +40,14 @@ int factorialOperation(int a)
     }
     else
     {
-        int factorialize;
+        long long unsigned factorialize;
         factorialize = a * factorialOperation(a - 1);
         return factorialize;
     }
 }
 
 void performCalculations(float firstOperand, float secondOperand, float* pAddResult, float* pSubtractionResult, float* pMultiplicationResult,
-                         float* pDivisionResult, long long int* pFactorialResultA, long long int* pFactorialResultB, int* pFlagUpdatedCalculations)
+                         float* pDivisionResult, long long unsigned* pFactorialResultA, long long unsigned* pFactorialResultB, int* pFlagUpdatedCalculations)
 {
     (*pAddResult) = addOperation(firstOperand,secondOperand);
     (*pSubtractionResult) = subtractOperation(firstOperand,secondOperand);
@@ -115,22 +115,22 @@ void displayOperationResult(char operatorChar, float result)
     printf("El resultado de A%cB es: %.2f\n", operatorChar, result);
 }
 
-void displayFactorialResult(long long int resultA, long long int resultB)
+void displayFactorialResult(long long unsigned resultA, long long unsigned resultB)
 {
-    printf("El factorial de A es: %lld y El factorial de B es: %lld\n", resultA, resultB);
+    printf("El factorial de A es: %llu y El factorial de B es: %llu\n", resultA, resultB);
 }
 
-void displayFactorialResultA(long long int result)
+void displayFactorialResultA(long long unsigned result)
 {
-    printf("El factorial de A es: %lld y El factorial de B no se pudo calcular\n", result);
+    printf("El factorial de A es: %llu y El factorial de B no se pudo calcular\n", result);
 }
 
-void displayFactorialResultB(long long int result)
+void displayFactorialResultB(long long unsigned result)
 {
-    printf("El factorial de A no se pudo calcular y El factorial de B es: %lld\n", result);
+    printf("El factorial de A no se pudo calcular y El factorial de B es: %llu\n", result);
 }
 
-void displayAllTheResults(float addResult, float subtractionResult, float multiplicationResult, float divisionResult, float firstOperand, float secondOperand, long long int factorialResultA, long long int factorialResultB)
+void displayAllTheResults(float addResult, float subtractionResult, float multiplicationResult, float divisionResult, float firstOperand, float secondOperand, long long unsigned factorialResultA, long long unsigned factorialResultB)
 {
     displayOperationResult('+', addResult);
     displayOperationResult('-', subtractionResult);
