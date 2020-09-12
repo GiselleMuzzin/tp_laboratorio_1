@@ -25,17 +25,29 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 
 int main(void)
 {
+    // Operandos de las operaciones
     float firstOperand = 0;
     float secondOperand = 0;
+
+    // Resultados de las operaciones
     float addResult;
     float subtractionResult;
     float multiplicationResult;
     float divisionResult;
     long long unsigned factorialResultA;
     long long unsigned factorialResultB;
+
+    // Opcion seleccionada por el usuario
     int option;
+
+    // Bandera que indica si los calculos estan actualizados
+    // esto es: se hicieron despues de que se diera valor a los operandos
     int flagUpdatedCalculations = 0;
+
+    // Bandera que indica si el primer operando ha sido cargado (si no se carga, no se puede sumar)
+    // Ademas no se puede mostrar el valor del operando si no se cargó
     int flagFirstOperandLoaded = 0;
+    // Analogo pero para el segundo operando
     int flagSecondOperandLoaded = 0;
 
     showMenu(flagFirstOperandLoaded, firstOperand, flagSecondOperandLoaded, secondOperand);
@@ -54,7 +66,7 @@ int main(void)
             loadOperand(&secondOperand, &flagUpdatedCalculations, &flagSecondOperandLoaded);
             break;
         case 3:
-            if (flagFirstOperandLoaded == 0 || flagSecondOperandLoaded == 0)
+            if (flagFirstOperandLoaded == 0 || flagSecondOperandLoaded == 0) // Falta cargar algun operando, no podemos operar
             {
                 printf("Para hacer los calculos se deben ingresar dos operandos mediante las opciones 1 y 2 del menu\n");
             }
@@ -65,7 +77,7 @@ int main(void)
             }
             break;
         case 4:
-            if(flagUpdatedCalculations == 0)
+            if(flagUpdatedCalculations == 0) // Los calculos no se han hecho desde que se cargaron los operandos
             {
                 printf("Los calculos no estan listos para ser mostrados, calculelos con la opcion 3\n");
             }
@@ -80,4 +92,3 @@ int main(void)
     }
     return 0;
 }
-

@@ -65,33 +65,49 @@ void performCalculations(float firstOperand, float secondOperand, float* pAddRes
         (*pFactorialResultB) = factorialOperation((int)secondOperand);
 
     }
+    // los calculos han sido actualizados
     (*pFlagUpdatedCalculations) = 1;
 }
 
 
 int checkIfFloatIsInt(float number)
 {
+    // un float es entero si al pasarlo a int queda igual
+    // por ejemplo 2.5 al pasarse a int queda 2 y no es igual a 2.5
     int intVersionOfNumber = (int) number;
     if(intVersionOfNumber == number)
     {
-        return 1;
+        return 1; // es un int
     }
     else
     {
-        return 0;
+        return 0; // no es un int
     }
 }
 
+
 int canCalculateFactorial(float number)
 {
-    return number >= 1 && checkIfFloatIsInt(number);
+    // Para poder calcularlo tiene que pasar que:
+    // el numero sea mayor o igual que 1 y el numero tiene que ser entero
+    if(number >= 1 && checkIfFloatIsInt(number))
+    {
+        return 1; // se puede
+    }
+    else
+    {
+        return 0; // no se puede
+    }
+
 }
 
 
 void loadOperand(float* operand, int* flagUpdatedCalculations, int* flagOperandLoaded)
 {
     scanf("%f", operand);
+    // Como se cargó un operando, los calculos estan desactualizados
     (*flagUpdatedCalculations) = 0;
+    // Indica que el operando fue cargado
     (*flagOperandLoaded) = 1;
 }
 
