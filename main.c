@@ -23,23 +23,26 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 #include "muzzin.h"
 
 
+
+
 int main(void)
 {
-    int firstOperand=0;
-    int secondOperand=0;
-    int addResult;
-    int subtractionResult;
-    int multiplicationResult;;
+    float firstOperand=0;
+    float secondOperand=0;
+    float addResult;
+    float subtractionResult;
+    float multiplicationResult;;
     int factorialResultA;
     int factorialResultB;
     int option;
     float divisionResult;
-    int updatedCalculations = 0;
-    int firstOperandLoaded = 0;
-    int secondOperandLoaded = 0;
+
+    int flagUpdatedCalculations = 0;
+    int flagFirstOperandLoaded = 0;
+    int flagSecondOperandLoaded = 0;
 
 
-    showMenu(firstOperandLoaded, firstOperand, secondOperandLoaded, secondOperand);
+    showMenu(flagFirstOperandLoaded, firstOperand, flagSecondOperandLoaded, secondOperand);
     option = askForOption();
 
 
@@ -49,92 +52,41 @@ int main(void)
         {
         case 1:
             printf("Ingrese el primer operando: ");
-            scanf("%d", &firstOperand);
-            updatedCalculations = 0;
-            firstOperandLoaded = 1;
+            loadOperand(&firstOperand, &flagUpdatedCalculations, &flagFirstOperandLoaded);
             break;
         case 2:
             printf("Ingrese el segundo operando: ");
-            scanf("%d", &secondOperand);
-            updatedCalculations = 0;
-            secondOperandLoaded = 1;
+            loadOperand(&secondOperand, &flagUpdatedCalculations, &flagSecondOperandLoaded);
             break;
         case 3:
-            if (firstOperandLoaded == 0 || secondOperandLoaded == 0)
+            if (flagFirstOperandLoaded == 0 || flagSecondOperandLoaded == 0)
             {
                 printf("Para hacer los calculos se deben ingresar dos operandos mediante las opciones 1 y 2 del menu\n");
             }
             else
             {
-                addResult= addOperation(firstOperand,secondOperand);
-                subtractionResult = subtractOperation(firstOperand,secondOperand);
-                multiplicationResult = multiplyOperation(firstOperand,secondOperand);
-                if(secondOperand != 0)
-                {
-                    divisionResult = divideOperation(firstOperand,secondOperand);
-                }
-                if(firstOperand >= 1)
-                {
-                    factorialResultA = factorialOperation(firstOperand);
-                }
-                if(secondOperand >= 1)
-                {
-                    factorialResultB = factorialOperation(secondOperand);
-
-                }
-                updatedCalculations = 1;
+                performCalculations(firstOperand, secondOperand, &addResult,
+                                    &subtractionResult, &multiplicationResult,
+                                    &divisionResult,&factorialResultA,
+                                    &factorialResultB, &flagUpdatedCalculations);
             }
             break;
         case 4:
-            if(updatedCalculations == 0)
+            if(flagUpdatedCalculations == 0)
             {
                 printf("Los calculos no estan listos para ser mostrados, calculelos con la opcion 3\n");
             }
             else
             {
-                displayIntResult('+', addResult);
-                displayIntResult('-', subtractionResult);
-                displayIntResult('*', multiplicationResult);
-                if(secondOperand == 0)
-                {
-                    printf("No se puede dividir por cero.\n");
-                }
-                else
-                {
-                    displayFloatResult('/', divisionResult);
-                }
-                if(firstOperand >= 1 && secondOperand >= 1 )
-                {
-                    displayFactorialResult(factorialResultA, factorialResultB);
-                }
-                else
-                {
-                    if(firstOperand < 1 && secondOperand >= 1)
-                    {
-                        displayFactorialResultB(factorialResultB);
-                    }
-                    else
-                    {
-                        if(firstOperand >= 1 && secondOperand < 1)
-                        {
-                            displayFactorialResultA(factorialResultA);
-                        }
-                        else
-                        {
-                            printf("El factorial de A no se pudo calcular porque es menor a 1 y El factorial de B tampoco\n");
-                        }
-                    }
-
-                }
+                displayAllTheResults(addResult, subtractionResult, multiplicationResult, divisionResult, firstOperand, secondOperand, factorialResultA, factorialResultB);
             }
             break;
 
         }
-        showMenu(firstOperandLoaded, firstOperand, secondOperandLoaded, secondOperand);
+        showMenu(flagFirstOperandLoaded, firstOperand, flagSecondOperandLoaded, secondOperand);
         option = askForOption();
 
     }
-
 
     return 0;
 }

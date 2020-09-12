@@ -1,34 +1,36 @@
 #include "muzzin.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
 
-int addOperation (int a, int b)
+
+float addOperation (float a, float b)
 {
-    int addition;
+    float addition;
     addition = a + b;
     return addition;
 }
 
-int subtractOperation (int a, int b)
+float subtractOperation (float a, float b)
 {
-    int subtraction;
+    float subtraction;
     subtraction = a - b;
     return subtraction;
 }
 
-int multiplyOperation(int a, int b)
+float multiplyOperation(float a, float b)
 {
-    int multiplication;
+    float multiplication;
     multiplication = a * b;
     return multiplication;
 }
 
 // requiere que b no sea 0
-float divideOperation(int a, int b)
+float divideOperation(float a, float b)
 {
     float division;
-    division = (float) a / b;
+    division = a / b;
     return division;
 }
 
@@ -47,12 +49,7 @@ int factorialOperation(int a)
 }
 
 
-void displayIntResult(char operatorChar, int result)
-{
-    printf("El resultado de A%cB es: %d\n", operatorChar, result);
-}
-
-void displayFloatResult(char operatorChar, float result)
+void displayOperationResult(char operatorChar, float result)
 {
     printf("El resultado de A%cB es: %.2f\n", operatorChar, result);
 }
@@ -64,12 +61,12 @@ void displayFactorialResult(int resultA, int resultB)
 
 void displayFactorialResultA(int result)
 {
-    printf("El factorial de A es: %d y El factorial de B no se pudo calcular porque es menor a 1\n", result);
+    printf("El factorial de A es: %d y El factorial de B no se pudo calcular\n", result);
 }
 
 void displayFactorialResultB(int result)
 {
-    printf("El factorial de A no se pudo calcular porque es menor a 1 y El factorial de B es: %d\n", result);
+    printf("El factorial de A no se pudo calcular y El factorial de B es: %d\n", result);
 }
 
 int askForOption()
@@ -86,7 +83,7 @@ int askForOption()
     return option;
 }
 
-void showMenu(int firstOperandLoaded, int firstOperand, int secondOperandLoaded, int secondOperand)
+void showMenu(int firstOperandLoaded, float firstOperand, int secondOperandLoaded, float secondOperand)
 {
     printf("Calculadora\n");
     printf("Menu\n");
@@ -97,7 +94,7 @@ void showMenu(int firstOperandLoaded, int firstOperand, int secondOperandLoaded,
     printf("5 - Salir\n");
     if(firstOperandLoaded == 1)
     {
-        printf("El primer operando es %d\n", firstOperand);
+        printf("El primer operando es %.2f\n", firstOperand);
     }
     else
     {
@@ -105,11 +102,97 @@ void showMenu(int firstOperandLoaded, int firstOperand, int secondOperandLoaded,
     }
     if(secondOperandLoaded == 1)
     {
-        printf("El segundo operando es %d\n", secondOperand);
+        printf("El segundo operando es %.2f\n", secondOperand);
     }
     else
     {
         printf("El segundo operando no ha sido cargado\n");
     }
 
+}
+
+int checkIfFloatIsInt(float number)
+{
+    int intVersionOfNumber = (int) number;
+    if(intVersionOfNumber == number)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int canCalculateFactorial(float number)
+{
+    return number >= 1 && checkIfFloatIsInt(number);
+}
+
+void loadOperand(float* operand, int* flagUpdatedCalculations, int* flagOperandLoaded)
+{
+    scanf("%f", operand);
+    (*flagUpdatedCalculations) = 0;
+    (*flagOperandLoaded) = 1;
+}
+
+
+void displayAllTheResults(float addResult, float substractionResult, float multiplicationResult, float divisionResult, float firstOperand, float secondOperand, int factorialResultA, int factorialResultB)
+{
+    displayOperationResult('+', addResult);
+    displayOperationResult('-', substractionResult);
+    displayOperationResult('*', multiplicationResult);
+    if(secondOperand == 0)
+    {
+        printf("No se puede dividir por cero.\n");
+    }
+    else
+    {
+        displayOperationResult('/', divisionResult);
+    }
+    if(canCalculateFactorial(firstOperand) && canCalculateFactorial(secondOperand))
+    {
+        displayFactorialResult(factorialResultA, factorialResultB);
+    }
+    else
+    {
+        if( ! canCalculateFactorial(firstOperand) && canCalculateFactorial(secondOperand))
+        {
+            displayFactorialResultB((int)factorialResultB);
+        }
+        else
+        {
+            if(canCalculateFactorial(firstOperand) && !canCalculateFactorial(secondOperand))
+            {
+                displayFactorialResultA((int)factorialResultA);
+            }
+            else
+            {
+                printf("El factorial de A no se pudo calcular y El factorial de B tampoco\n");
+            }
+        }
+
+    }
+}
+
+void performCalculations(float firstOperand, float secondOperand, float* pAddResult, float* pSubtractionResult, float* pMultiplicationResult,
+                        float* pDivisionResult, int* pFactorialResultA, int* pFactorialResultB, int* pFlagUpdatedCalculations)
+{
+    (*pAddResult) = addOperation(firstOperand,secondOperand);
+    (*pSubtractionResult) = subtractOperation(firstOperand,secondOperand);
+    (*pMultiplicationResult) = multiplyOperation(firstOperand,secondOperand);
+    if(secondOperand != 0)
+    {
+        (*pDivisionResult) = divideOperation(firstOperand,secondOperand);
+    }
+    if(canCalculateFactorial(firstOperand))
+    {
+        (*pFactorialResultA) = factorialOperation((int)firstOperand);
+    }
+    if(canCalculateFactorial(secondOperand))
+    {
+        (*pFactorialResultB) = factorialOperation((int)secondOperand);
+
+    }
+    (*pFlagUpdatedCalculations) = 1;
 }

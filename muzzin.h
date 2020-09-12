@@ -1,23 +1,34 @@
 #ifndef MUZZIN_H_INCLUDED
 #define MUZZIN_H_INCLUDED
 
-// defino las funciones que necesito
-int addOperation (int a, int b);
-int subtractOperation (int a, int b);
-int multiplyOperation (int a, int b);
-float divideOperation (int a, int b);
-int factorialOperation (int a);
+// math operations
 
-void displayIntResult(char operatorChar, int result);
+/** \brief calcula la suma de los operandos
+*   \param a float primer operando de la suma
+*   \param b float segundo operando de la suma
+*   \return el resultado de la suma de a y b
+*
+*/
+float addOperation (float a, float b);
+float subtractOperation (float a, float b);
+float multiplyOperation (float a, float b);
+float divideOperation (float a, float b);
+int factorialOperation (int a);
+int checkIfFloatIsInt(float number);
+int canCalculateFactorial(float number);
+void loadOperand(float* pOperand, int* pFlagUpdatedCalculations, int* pFlagOperandLoaded);
+void displayOperationResult(char operatorChar, float result);
 void displayFactorialResult(int resultaA, int resultB);
-void displayFloatResult(char operatorChar, float result);
 void displayFactorialResultA(int result);
 void displayFactorialResultB(int result);
+void performCalculations(float firstOperand, float secondOperand, float* pAddResult, float* pSubtractionResult,
+                        float* pMultiplicationResult, float* pDivisionResult,
+                        int* pFactorialResultA, int* pFactorialResultB, int* pFlagUpdatedCalculations);
 
 int askForOption();
 
-void showMenu(int firstOperandLoaded, int firstOperand, int secondOperandLoaded, int secondOperand);
-
+void showMenu(int firstOperandLoaded, float firstOperand, int secondOperandLoaded, float secondOperand);
+void displayAllTheResults(float addResult, float substractionResult, float multiplicationResult, float divisionResult, float firstOperand, float secondOperand, int factorialResultA, int factorialResultB);
 
 
 #endif // MUZZIN_H_INCLUDED
