@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1599941625 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_1/main.c
+1599949841 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_1/main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
 	"muzzin.h"
 
-1599941788 /home/gise/Documents/utn codeblocks/tp_laboratorio_1/muzzin.h
+1599950748 /home/gise/Documents/utn codeblocks/tp_laboratorio_1/muzzin.h
 
-1599941934 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_1/muzzin.c
+1599950194 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_1/muzzin.c
 	"muzzin.h"
 	<stdio.h>
 	<stdlib.h>

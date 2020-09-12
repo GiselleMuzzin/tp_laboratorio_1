@@ -1,4 +1,5 @@
 /*
+Muzzin Giselle
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
 1. Ingresar 1er operando (A=x)
 2. Ingresar 2do operando (B=y)
@@ -22,29 +23,23 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 #include <stdio_ext.h>
 #include "muzzin.h"
 
-
-
-
 int main(void)
 {
-    float firstOperand=0;
-    float secondOperand=0;
+    float firstOperand = 0;
+    float secondOperand = 0;
     float addResult;
     float subtractionResult;
-    float multiplicationResult;;
-    int factorialResultA;
-    int factorialResultB;
-    int option;
+    float multiplicationResult;
     float divisionResult;
-
+    long long int factorialResultA;
+    long long int factorialResultB;
+    int option;
     int flagUpdatedCalculations = 0;
     int flagFirstOperandLoaded = 0;
     int flagSecondOperandLoaded = 0;
 
-
     showMenu(flagFirstOperandLoaded, firstOperand, flagSecondOperandLoaded, secondOperand);
     option = askForOption();
-
 
     while(option != 5)  //opcion 5 es salir
     {
@@ -65,10 +60,8 @@ int main(void)
             }
             else
             {
-                performCalculations(firstOperand, secondOperand, &addResult,
-                                    &subtractionResult, &multiplicationResult,
-                                    &divisionResult,&factorialResultA,
-                                    &factorialResultB, &flagUpdatedCalculations);
+                performCalculations(firstOperand, secondOperand, &addResult, &subtractionResult, &multiplicationResult,
+                                    &divisionResult,&factorialResultA, &factorialResultB, &flagUpdatedCalculations);
             }
             break;
         case 4:
@@ -81,13 +74,10 @@ int main(void)
                 displayAllTheResults(addResult, subtractionResult, multiplicationResult, divisionResult, firstOperand, secondOperand, factorialResultA, factorialResultB);
             }
             break;
-
         }
         showMenu(flagFirstOperandLoaded, firstOperand, flagSecondOperandLoaded, secondOperand);
         option = askForOption();
-
     }
-
     return 0;
 }
 
