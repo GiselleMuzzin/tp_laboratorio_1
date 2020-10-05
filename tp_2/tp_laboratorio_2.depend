@@ -1,14 +1,5 @@
 # depslib dependency file v1.0
-1600725532 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_2/employee.c
-
-1601843125 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_2/main.c
-	<stdio.h>
-	<stdlib.h>
-	<stdio_ext.h>
-	"employee.h"
-	"ArrayEmployees.h"
-
-1601847732 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_2/ArrayEmployees.c
+1601847732 source:/home/gise/Documents/utn codeblocks/tp_laboratorio_1/tp_2/ArrayEmployees.c
 	<stdio.h>
 	<stdlib.h>
 	<stddef.h>
@@ -16,8 +7,8 @@
 	<stdio_ext.h>
 	"ArrayEmployees.h"
 
-1601764433 /home/gise/Documents/utn codeblocks/tp_laboratorio_2/ArrayEmployees.h
+1601764433 /home/gise/Documents/utn codeblocks/tp_laboratorio_1/tp_2/ArrayEmployees.h
 	"employee.h"
 
-1600725804 /home/gise/Documents/utn codeblocks/tp_laboratorio_2/employee.h
+1600725804 /home/gise/Documents/utn codeblocks/tp_laboratorio_1/tp_2/employee.h
 
